@@ -40,14 +40,17 @@
     });
   };
 
-  //Add coffee order to server
+  //Add coffee order including email, name, size, flavor, strength to server
   RemoteDataStore.prototype.add = function(key, val) {
     $.ajax(this.serverUrl, {
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({
         emailCustomer: key,
-        coffeeOrder: val.coffee
+        coffeeOrder: val.coffee,
+        size: val.size,
+        flavor: val.flavor,
+        strength: val.strength
       }),
       success: function() {},
       error: function(xhr) {
